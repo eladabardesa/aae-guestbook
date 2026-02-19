@@ -4,6 +4,12 @@
   "private": true,
   "description": "AAE Attentive Art Encounters — neural web guestbook",
   "scripts": {
-    "start": "npx serve . -p ${PORT:-3000}",
-    "dev": "npx serve . -p 3000"
+    "start": "serve .",
+    "dev": "serve . -p 3000"
+  },
+  "dependencies": {
+    "serve": "^14.2.2"
+  },
+  "engines": {
+    "node": ">=18"
   }
