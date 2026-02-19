@@ -42,3 +42,9 @@ Replace placeholder images and seed data with real artworks and real responses w
    - After deploy, open **Settings** → **Generate Domain** to get a public URL (e.g. `https://aae-guestbook.up.railway.app`).
 
 3. **Optional:** Add env vars later (e.g. `EVENT_PASSWORD` when you add the shared-password flow).
+
+### If you get "Application failed to respond" (502)
+
+- **Deploy logs:** In Railway → your service → **Deployments** → latest deploy → **View Logs**. After the build you should see `Server listening on 0.0.0.0:XXXX`. If you don’t, the app is crashing at startup (check for errors in the log).
+- **Target port:** In the service → **Settings** → **Networking** / **Public networking**, do **not** set a custom "Target port". Leave it blank so Railway uses the `PORT` your app listens on.
+- **Start command:** In **Settings** → **Deploy**, the start command should be `node server.js` (or leave empty to use `npm start` from `package.json`).
