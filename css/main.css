@@ -1,0 +1,253 @@
+/* Mobile-first · AAE Guestbook */
+:root {
+  --bg: #0d0d12;
+  --surface: #16161d;
+  --text: #e8e6e3;
+  --muted: #8b8685;
+  --accent: #c9a227;
+  --accent-dim: rgba(201, 162, 39, 0.25);
+  --overlay-bg: rgba(13, 13, 18, 0.92);
+  --min-tap: 44px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(to bottom, var(--bg) 60%, transparent);
+  pointer-events: none;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.tagline {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.graph-container {
+  position: absolute;
+  inset: 0;
+  min-height: 320px;
+}
+
+.graph-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Detail overlay: full screen on mobile */
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: var(--overlay-bg);
+  backdrop-filter: blur(8px);
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s;
+}
+
+.detail-overlay.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.detail-panel {
+  min-height: 100%;
+  padding: 3rem 1rem 2rem;
+  padding-bottom: env(safe-area-inset-bottom, 2rem);
+}
+
+.close-btn {
+  position: fixed;
+  top: 0.75rem;
+  right: 1rem;
+  z-index: 21;
+  width: var(--min-tap);
+  height: var(--min-tap);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--text);
+  background: var(--surface);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  background: var(--muted);
+  color: var(--bg);
+}
+
+.detail-content {
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.artwork-hero {
+  margin-bottom: 1.25rem;
+}
+
+.artwork-hero img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  background: var(--surface);
+}
+
+.connection-hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+.contributions {
+  margin-bottom: 1.5rem;
+}
+
+.contributions h2,
+.add-contribution h2 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#contributions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#contributions-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--surface);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+#contributions-list li:last-child {
+  border-bottom: none;
+}
+
+.contribution-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.contribution-meta .game {
+  color: var(--accent);
+}
+
+.add-contribution label {
+  display: block;
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.add-contribution input,
+.add-contribution textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.add-contribution input::placeholder,
+.add-contribution textarea::placeholder {
+  color: var(--muted);
+}
+
+.add-contribution input:focus,
+.add-contribution textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-dim);
+}
+
+.submit-btn {
+  width: 100%;
+  min-height: var(--min-tap);
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+  filter: brightness(1.1);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.empty-contributions {
+  color: var(--muted);
+  font-style: italic;
+  padding: 0.75rem 0;
+}

@@ -1,0 +1,9 @@
+{
+  "name": "aae-guestbook",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AAE Attentive Art Encounters — neural web guestbook",
+  "scripts": {
+    "start": "npx serve . -p ${PORT:-3000}",
+    "dev": "npx serve . -p 3000"
+  }
