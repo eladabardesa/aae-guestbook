@@ -24,3 +24,21 @@ Then open **http://localhost:3000** in your browser (or the URL shown). Use your
 - **Contributions**: Seed data in `js/data.js` plus any you add via the form (stored in `localStorage`).
 
 Replace placeholder images and seed data with real artworks and real responses when you’re ready.
+
+## Deploy on Railway
+
+1. **Push this repo to GitHub**
+   - Create a new repository on GitHub (e.g. `aae-guestbook`).
+   - Then in this folder:
+   ```bash
+   git remote add origin https://github.com/YOUR_USERNAME/aae-guestbook.git
+   git push -u origin main
+   ```
+
+2. **Deploy on Railway**
+   - Go to [railway.app](https://railway.app) and sign in (GitHub is easiest).
+   - **New Project** → **Deploy from GitHub repo** → choose this repo.
+   - Railway will detect `package.json`, run `npm install` and `npm start`. The app serves the static site on the provided `PORT`.
+   - After deploy, open **Settings** → **Generate Domain** to get a public URL (e.g. `https://aae-guestbook.up.railway.app`).
+
+3. **Optional:** Add env vars later (e.g. `EVENT_PASSWORD` when you add the shared-password flow).
